@@ -89,24 +89,32 @@
             
         </div>
         <script>
-     const button = document.querySelector('.button');
-const container = document.querySelector('.container');
-let count = 0;
+            const button = document.querySelector('.button');
+            const container = document.querySelector('.container');
+            let counter = 0;
+      
+            button.addEventListener('click', () => {
+              if (counter < 49) {
+                const item = document.createElement('div');
+                item.classList.add('container__item');
+                item.textContent = getRandomNumber();
+                container.appendChild(item);
+                counter++;
+              }
+              if (counter === 49) {
+                button.disabled = true;
+              }
+            });
+      
+            function getRandomNumber() {
+              return Math.floor(Math.random() * 901) +
+              100;
+        }
+      </script>
+    </body>
+  </html>
+  
 
-function addElement() {
-  for (let i = 0; i < 49; i++) {
-    const element = document.createElement('div');
-    element.classList.add('container__item');
-    element.textContent = count + i + 1;
-    container.appendChild(element);
-  }
-  count += 49;
-  if (count >= 49) {
-    button.disabled = true;
-  }
-}
-
-button.addEventListener('click', addElement);
 
         </script>    
     </body>
